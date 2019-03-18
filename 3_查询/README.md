@@ -29,13 +29,16 @@ load data local inpath 'student_info_score' into table dev.student_info_score;
 ### 2.1 查询全部数据 (基础函数) 
 
 + 基本语法：
-select * from `表`;
+
+	+ select * from `表`;
 
 + 示例：
+
 ```sql
 select * from dev.student_info_score;
 ```
 + 结果：
+
 ![avatar](./figure/query_all_data.png)
 
 
@@ -43,13 +46,16 @@ select * from dev.student_info_score;
 ### 2.2 查询部分数据 (limit 函数)
 
 + 基本语法：
-select * from `表` limit 5;
+
+	+ select * from `表` limit 5;
 
 + 示例：
+
 ```sql
 select * from dev.student_info_score limit 5;
 ```
 + 结果：
+
 ![avatar](./figure/limit.png)
 
 
@@ -57,13 +63,16 @@ select * from dev.student_info_score limit 5;
 ### 2.3 查询部分字段数据 (基础函数) 
 
 + 基本语法：
-select `字段1`, `字段2` from `表` limit 5;
+
+	+ select `字段1`, `字段2` from `表` limit 5;
 
 + 示例：
+
 ```sql
 select name, subject, score from dev.student_info_score limit 5;
 ```
 + 结果：
+
 ![avatar](./figure/sub_field.png)
 
 
@@ -71,87 +80,107 @@ select name, subject, score from dev.student_info_score limit 5;
 ### 2.4 查询数据行数 (count 函数)
 
 + 基本语法：
-select count(\*) from `表`;
+
+	+ select count(\*) from `表`;
 
 + 示例：
+
 ```sql
 select count(*) as cnt from dev.student_info_score;
 或
 select count(1) as cnt from dev.student_info_score;
 ```
 + 结果：
+
 ![avatar](./figure/count.png)
 
 + 说明：
-as cnt 是别名。
+
+	+ as cnt 是别名。
 
 
 
 ### 2.5 查询成绩最大值 (max 函数)
 
 + 基本语法：
-select max(`字段`) from `表`;
+
+	+ select max(`字段`) from `表`;
 
 + 示例：
+
 ```sql
 select max(score) as max_score from dev.student_info_score;
 ```
 + 结果：
+
 ![avatar](./figure/max.png)
 
 + 说明：
-as max_score 是别名。
+
+	+ as max_score 是别名。
 
 
 
 ### 2.6 查询成绩最小值 (min 函数)
 
 + 基本语法：
-select min(`字段`) from `表`;
+
+	+ select min(`字段`) from `表`;
 
 + 示例：
+
 ```sql
 select min(score) as min_score from dev.student_info_score;
 ```
 + 结果：
+
 ![avatar](./figure/min.png)
 
 + 说明：
-as min_score 是别名。
+
+	+ as min_score 是别名。
 
 
 
 ### 2.7 查询成绩总值 (sum 函数)
 
 + 基本语法：
-select sum(`字段`) from `表`;
+
+	+ select sum(`字段`) from `表`;
 
 + 示例：
+
 ```sql
 select sum(score) as sum_score from dev.student_info_score;
 ```
 + 结果：
+
 ![avatar](./figure/sum.png)
 
 + 说明：
-as sum_score 是别名。
+
+	+ as sum_score 是别名。
 
 
 
 ### 2.8 查询成绩平均值 (avg 函数)
 
 + 基本语法：
-select avg(`字段`) from `表`;
+
+	+ select avg(`字段`) from `表`;
 
 + 示例：
+
 ```sql
 select avg(score) as avg_score from dev.student_info_score;
 ```
 + 结果：
+
 ![avatar](./figure/avg.png)
 
 + 说明：
-as avg_score 是别名。
+
+	+ as avg_score 是别名。
 
 
 
