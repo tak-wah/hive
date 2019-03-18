@@ -186,28 +186,31 @@ select avg(score) as avg_score from dev.student_info_score;
 
 ### 2.9 查询符合条件的数据 (where 函数) 
 
-+ 基本语法：
-select * from `表` where `条件`;
-+ 比较运算符
+（1）基本语法：
 
-	+ 下面表中描述了谓词操作符，这些操作符同样可以用于 JOIN…ON 和 HAVING 语句中。 
++ select * from `表` where `条件`;
 
+（1.1）比较运算符 (between / in / is null / is not null)
 
+下面表中描述了谓词操作符，这些操作符同样可以用于 JOIN…ON 和 HAVING 语句中。 
 
+![avatar](./figure/比较运算符.png)
 
+（1.2）示例：
 
-
-查询符合条件的数据 (where 函数) (select * from `表` where `条件`)
 ```sql
-select * from dev.student_info_score where score>70;
-或
-select * from dev.student_info_score where score is not null;
+（a）查询成绩等于 90 的数据 
+select * from dev.student_info_score where score=90; 
+
+（b）查询成绩在 70 到 90 的数据
+select * from dev.student_info_score where score between 70 and 90; 
+
+（c）查询成绩非空的数据 
+select * from dev.student_info_score where score is not null; 
+
+（d）查询成绩是 72 和 90 的数据
+select * from dev.student_info_score where score in (72, 90);
+
 ```
-`结果如下：`
 
-![avatar](./figure/where1.png)
-和
-![avatar](./figure/where2.png)
-
-`说明：` null 判断`score`是否为缺失值。
-
+（1.3）结果：
