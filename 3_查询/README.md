@@ -192,15 +192,16 @@ select avg(score) as avg_score from dev.student_info_score;
 
 （1.1）比较运算符 (between / in / is null / is not null / like / rlike)
 
-下面表中描述了谓词操作符，这些操作符同样可以用于 JOIN…ON 和 HAVING 语句中。 
+下面表中描述了谓词操作符，这些操作符同样可以用于 join ... on 和 having 语句中。 
 
-like说明：
+`like说明：`
 
-% 代表零个或多个字符(任意个字符)。 
+`%` 代表零个或多个字符(任意个字符)。 
 
-_ 代表一个字符。 
+`_` 代表一个字符。 
 
-rlike说明：
+`rlike说明：`
+
 rlike 是 Hive 中这个功能的一个扩展，其可以通过 Java 的正则表达式这个更强大的语言来指定匹配条件。 
 
 
@@ -236,8 +237,6 @@ select * from dev.student_info_score where name rlike '[a]';
 
 
 
-
-
 （2.1）逻辑运算符 (and / or/ not)
 
 ![avatar](./figure/逻辑运算符.png)
@@ -254,3 +253,54 @@ select * from dev.student_info_score where score>90 or gender='F';
 （j）查询 subject 除了 math 和 english 以外的数据
 select * from dev.student_info_score where subject not in('math', 'english');
 ```
+
+（2.3）结果：
+
+
+
+### 2.10 分组 (group by 函数) 
+
+group by 语句通常会和聚合函数一起使用，按照一个或者多个列队结果进行分组，然后对每个组执行聚合操作。
+
+（1）基本语法：
+
++ select `字段`, `聚合函数` from `表` group by `字段`;
+
+
+
+（2）示例：
+
+```sql
+（a）计算每个人的平均成绩
+select name, avg(score) avg_score from dev.student_info_score group by name; 
+
+（b）计算 gender, subject 的最高成绩
+select gender, subject,  max(score) max_score from from dev.student_info_score group by gender, subject;
+
+```
+
+
+### 2.11 分组+删选 (group by 函数 + where， group by 函数 + having) 
+
+`having 与 where 不同点：`
+
++ where 针对表中的列发挥作用，查询数据； having 针对查询结果中的列发挥作用，筛选数据。 
+
++ where 后面不能写分组函数，而 having 后面可以使用分组函数。 
+
++ having 只用于 group by 分组统计语句。
+
+
+```sql
+求每个 subject 的平均 score 大于 60 的 subject
+select subject, avg(score) avg_score from empfrom dev.student_info_score group by subject having avg_score > 60;
+
+等价于
+select * from
+(
+select subject, avg(score) avg_score from dev.student_info_score group by subject) as subject_avg_score
+where avg_sal > 60;
+```
+
+
+
