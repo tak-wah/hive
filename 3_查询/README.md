@@ -190,9 +190,19 @@ select avg(score) as avg_score from dev.student_info_score;
 
 + select * from `表` where `条件`;
 
-（1.1）比较运算符 (between / in / is null / is not null)
+（1.1）比较运算符 (between / in / is null / is not null / like / rlike)
 
 下面表中描述了谓词操作符，这些操作符同样可以用于 JOIN…ON 和 HAVING 语句中。 
+
+like说明：
+
+% 代表零个或多个字符(任意个字符)。 
+
+_ 代表一个字符。 
+
+rlike说明：
+rlike 是 Hive 中这个功能的一个扩展，其可以通过 Java 的正则表达式这个更强大的语言来指定匹配条件。 
+
 
 ![avatar](./figure/比较运算符.png)
 
@@ -211,6 +221,36 @@ select * from dev.student_info_score where score is not null;
 （d）查询成绩是 72 和 90 的数据
 select * from dev.student_info_score where score in (72, 90);
 
+（e）查找以 z 开头 name 的数据
+select * from dev.student_info_score where name like 'z%'; 
+
+（f）查找第三个字符为 a 的数据
+select * from dev.student_info_score where name like '__a%'; 
+
+（g）查找 name 中含有 a 的数据
+select * from dev.student_info_score where name rlike '[a]';
+
 ```
 
 （1.3）结果：
+
+
+
+
+
+（2.1）逻辑运算符 (and / or/ not)
+
+![avatar](./figure/逻辑运算符.png)
+
+
+（2.2）示例：
+```sql
+（h）查询成绩大于 90，name 是 zhao
+select * from dev.student_info_score where score>80 and name='zhao'; 
+
+（i）查询成绩大于 90，或者 gender 是 F 
+select * from dev.student_info_score where score>90 or gender='F'; 
+
+（j）查询 subject 除了 math 和 english 以外的数据
+select * from dev.student_info_score where subject not in('math', 'english');
+```
