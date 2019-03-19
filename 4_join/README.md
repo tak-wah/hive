@@ -65,7 +65,7 @@ inner join
 dev.student_info_school b
 on a.name=b.name;
 
-或
+等价于
 
 select a.*, b.* from 
 dev.student_info_score a,
