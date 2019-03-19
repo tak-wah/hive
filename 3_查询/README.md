@@ -294,7 +294,7 @@ select gender, subject,  max(score) max_score from from dev.student_info_score g
 ```
 
 
-### 2.11 分组+删选 (group by 函数 + where， group by 函数 + having) 
+### 2.11 分组+筛选 (group by 函数 + where， group by 函数 + having) 
 
 **having 与 where 不同点：**
 
