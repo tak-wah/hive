@@ -87,7 +87,9 @@ select name, subject, score from dev.student_info_score limit 5;
 
 ```sql
 select count(*) as cnt from dev.student_info_score;
+
 或
+
 select count(1) as cnt from dev.student_info_score;
 ```
 （3）结果：
@@ -194,13 +196,13 @@ select avg(score) as avg_score from dev.student_info_score;
 
 下面表中描述了谓词操作符，这些操作符同样可以用于 join ... on 和 having 语句中。 
 
-`like说明：`
+**like说明：**
 
 `%` 代表零个或多个字符(任意个字符)。 
 
 `_` 代表一个字符。 
 
-`rlike说明：`
+**rlike说明：**
 
 rlike 是 Hive 中这个功能的一个扩展，其可以通过 Java 的正则表达式这个更强大的语言来指定匹配条件。 
 
@@ -211,24 +213,31 @@ rlike 是 Hive 中这个功能的一个扩展，其可以通过 Java 的正则�
 
 ```sql
 （a）查询成绩等于 90 的数据 
+
 select * from dev.student_info_score where score=90; 
 
 （b）查询成绩在 70 到 90 的数据
+
 select * from dev.student_info_score where score between 70 and 90; 
 
 （c）查询成绩非空的数据 
+
 select * from dev.student_info_score where score is not null; 
 
 （d）查询成绩是 72 和 90 的数据
+
 select * from dev.student_info_score where score in (72, 90);
 
 （e）查找以 z 开头 name 的数据
+
 select * from dev.student_info_score where name like 'z%'; 
 
 （f）查找第三个字符为 a 的数据
+
 select * from dev.student_info_score where name like '__a%'; 
 
 （g）查找 name 中含有 a 的数据
+
 select * from dev.student_info_score where name rlike '[a]';
 
 ```
@@ -245,12 +254,15 @@ select * from dev.student_info_score where name rlike '[a]';
 （2.2）示例：
 ```sql
 （h）查询成绩大于 90，name 是 zhao
+
 select * from dev.student_info_score where score>80 and name='zhao'; 
 
-（i）查询成绩大于 90，或者 gender 是 F 
+（i）查询成绩大于 90，或者 gender 是 F
+
 select * from dev.student_info_score where score>90 or gender='F'; 
 
 （j）查询 subject 除了 math 和 english 以外的数据
+
 select * from dev.student_info_score where subject not in('math', 'english');
 ```
 
@@ -272,9 +284,11 @@ group by 语句通常会和聚合函数一起使用，按照一个或者多个�
 
 ```sql
 （a）计算每个人的平均成绩
+
 select name, avg(score) avg_score from dev.student_info_score group by name; 
 
 （b）计算 gender, subject 的最高成绩
+
 select gender, subject,  max(score) max_score from from dev.student_info_score group by gender, subject;
 
 ```
@@ -293,12 +307,15 @@ select gender, subject,  max(score) max_score from from dev.student_info_score g
 
 ```sql
 求每个 subject 的平均 score 大于 60 的 subject
-select subject, avg(score) avg_score from empfrom dev.student_info_score group by subject having avg_score > 60;
+
+select subject, avg(score) avg_score 
+from empfrom dev.student_info_score
+group by subject having avg_score > 60;
 
 等价于
+
 select * from
-(
-select subject, avg(score) avg_score from dev.student_info_score group by subject) as subject_avg_score
+(select subject, avg(score) avg_score from dev.student_info_score group by subject) as subject_avg_score
 where avg_sal > 60;
 ```
 
