@@ -20,7 +20,7 @@ lines terminated by '\n' STORED AS TEXTFILE;
 
 ### 1.2 写入数据
 ```sql
-load data local inpath 'student_info_score' into table dev.student_info_score;
+load data local inpath './data/student_info_score' into table dev.student_info_score;
 ```
 
 
