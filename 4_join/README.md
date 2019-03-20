@@ -1,7 +1,7 @@
 # join语法
 
 ## 1. 创建数据表，写入数据
-### 1.1 建表
+### 1.1(a) 建表
 ```sql
 use dev;
 drop table dev.student_info_score;
@@ -16,7 +16,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
 lines terminated by '\n' STORED AS TEXTFILE;
 ```
 
-### 1.1 建表
+### 1.1(b) 建表
 ```sql
 use dev;
 drop table dev.student_info_school;
@@ -32,13 +32,19 @@ lines terminated by '\n' STORED AS TEXTFILE;
 ### 1.2 写入数据
 ```sql
 load data local inpath './data/student_info_score' into table dev.student_info_score;
+
 load data local inpath './data/student_info_school' into table dev.student_info_school;
 ```
 
 
 ### 1.3 结果
 
+表(a)结果
+
 ![avatar](./figure/score.png)
+
+表(b)结果
+
 ![avatar](./figure/school.png)
 
 

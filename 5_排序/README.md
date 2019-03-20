@@ -40,9 +40,11 @@ load data local inpath './data/student_info_school' into table dev.student_info_
 ### 1.3 结果
 
 表(a)结果
+
 ![avatar](./figure/score.png)
 
 表(b)结果
+
 ![avatar](./figure/school.png)
 
 
